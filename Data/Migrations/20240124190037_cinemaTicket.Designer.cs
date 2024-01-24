@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaTicket.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240124185218_cinemaTicket")]
+    [Migration("20240124190037_cinemaTicket")]
     partial class cinemaTicket
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

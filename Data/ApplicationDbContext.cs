@@ -10,12 +10,11 @@ namespace CinemaTicket.Data
             : base(options)
         {
         }
-
+        public DbSet<Genre> Genres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Sahne> Sahnes { get; set; }
         public DbSet<Screening> Screenings { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<User> Users { get; set; } // Eğer kullanıcı işlemleri için Identity kullanılmayacaksa
         public DbSet<Pay> Pays { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
