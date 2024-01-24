@@ -2,7 +2,7 @@
 
 namespace CinemaTicket.Models
 {
-    public class MovieCategory : CommonProperty
+    public class Genre : CommonProperty
     {
     }
 }
