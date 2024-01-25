@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CinemaTicket.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Bilet Listesi";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Koltuk Numarası</th>
+            <th>Fiyat</th>
+            <th>Satış Tarihi</th>
+            <th>Kullanıcı</th>
+            <th>Gösterim Zamanı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => ticket.SeatNumber)</td>
+                <td>@Html.DisplayFor(modelItem => ticket.Price)</td>
+                <td>@Html.DisplayFor(modelItem => ticket.SaleDate)</td>
+                <td>@Html.DisplayFor(modelItem => ticket.User.Name)</td>
+                <td>@Html.DisplayFor(modelItem => ticket.Screening.ScreeningTime)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@ticket.Id">Düzenle</a> |
+                    <a asp-action="Details" asp-route-id="@ticket.Id">Detaylar</a> |
+                    <a asp-action="Delete" asp-route-id="@ticket.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Yeni Bilet Ekle</a>

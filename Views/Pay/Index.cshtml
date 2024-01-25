@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CinemaTicket.Models.Pay>
+
+@{
+    ViewData["Title"] = "Ödeme Listesi";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ticket ID</th>
+            <th>Ödeme Tutarı</th>
+            <th>Ödeme Yöntemi</th>
+            <th>Ödeme Durumu</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TicketId</td>
+                <td>@item.PaymentAmount</td>
+                <td>@item.PaymentMethod</td>
+                <td>@(item.PaymentStatus ? "Tamamlandı" : "Beklemede")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Yeni Ödeme Ekle</a>

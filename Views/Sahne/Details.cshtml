@@ -1,0 +1,24 @@
+﻿@model CinemaTicket.Models.Sahne
+
+@{
+    ViewData["Title"] = "Sahne Detayları";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Sahne Adı</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        <dt class="col-sm-2">Koltuk Kapasitesi</dt>
+        <dd class="col-sm-10">@Model.SeatCapacity</dd>
+        <dt class="col-sm-2">Sahne Tipi</dt>
+        <dd class="col-sm-10">@Model.SceneType</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Düzenle</a> |
+    <a asp-action="Delete" asp-route-id="@Model.Id">Sil</a> |
+    <a asp-action="Index">Listeye Dön</a>
+</div>

@@ -1,0 +1,63 @@
+﻿@model CinemaTicket.Models.Movie
+
+@{
+    ViewData["Title"] = "Film Düzenle";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.HiddenFor(model => model.Id)
+
+        <label asp-for="Name" class="control-label">Film Adı</label>
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Director" class="control-label">Yönetmen</label>
+        @Html.EditorFor(model => model.Director, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Director, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Duration" class="control-label">Süre (Dakika)</label>
+        @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Genre" class="control-label">Tür</label>
+        @Html.EditorFor(model => model.Genre, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReleaseDate" class="control-label">Vizyon Tarihi</label>
+        @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+        @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PosterImageUrl" class="control-label">Poster Resmi URL</label>
+        @Html.EditorFor(model => model.PosterImageUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.PosterImageUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IMDBScore" class="control-label">IMDB Puanı</label>
+        @Html.EditorFor(model => model.IMDBScore, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.IMDBScore, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Güncelle" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">İptal</a>
+</div>

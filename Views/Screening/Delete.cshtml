@@ -1,0 +1,31 @@
+﻿@model CinemaTicket.Models.Screening
+
+@{
+    ViewData["Title"] = "Gösterim Sil";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Bu gösterimi silmek istediğinizden emin misiniz?</h3>
+<div>
+    <h4>Gösterim</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Film Adı</dt>
+        <dd class="col-sm-10">@Model.Movie.Name</dd>
+
+        <dt class="col-sm-2">Sahne Adı</dt>
+        <dd class="col-sm-10">@Model.Sahne.Name</dd>
+
+        <dt class="col-sm-2">Gösterim Zamanı</dt>
+        <dd class="col-sm-10">@Model.ScreeningTime.ToString("dd/MM/yyyy HH:mm")</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index">İptal</a>
+    </form>
+</div>

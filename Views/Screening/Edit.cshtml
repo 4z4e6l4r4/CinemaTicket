@@ -1,0 +1,47 @@
+﻿@model CinemaTicket.Models.Screening
+
+@{
+    ViewData["Title"] = "Gösterim Düzenle";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    @Html.AntiForgeryToken()
+    
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="MovieId" class="control-label">Film</label>
+       @*  <select asp-for="MovieId" class="form-control">
+            @foreach (var movie in ViewBag.Movies as IEnumerable<CinemaTicket.Models.Movie>) {
+                <option value="@movie.Id" @(Model.MovieId == movie.Id ? "selected" : "")>@movie.Name</option>
+            }
+        </select> *@
+        <span asp-validation-for="MovieId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SahneId" class="control-label">Sahne</label>
+        @* <select asp-for="SahneId" class="form-control">
+            @foreach (var sahne in ViewBag.Sahneler as IEnumerable<CinemaTicket.Models.Sahne>) {
+                <option value="@sahne.Id" @(Model.SahneId == sahne.Id ? "selected" : "")>@sahne.Name</option>
+            }
+        </select> *@
+        <span asp-validation-for="SahneId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ScreeningTime" class="control-label">Gösterim Zamanı</label>
+        <input asp-for="ScreeningTime" class="form-control" type="datetime-local" />
+        <span asp-validation-for="ScreeningTime" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Güncelle" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">İptal</a>
+</div>

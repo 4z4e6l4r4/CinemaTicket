@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CinemaTicket.Models.Sahne>
+
+@{
+    ViewData["Title"] = "Sahneler";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sahne Adı</th>
+            <th>Koltuk Kapasitesi</th>
+            <th>Sahne Tipi</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.SeatCapacity</td>
+                <td>@item.SceneType</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Yeni Sahne Ekle</a>

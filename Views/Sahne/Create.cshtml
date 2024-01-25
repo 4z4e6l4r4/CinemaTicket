@@ -1,0 +1,35 @@
+﻿@model CinemaTicket.Models.Sahne
+
+@{
+    ViewData["Title"] = "Yeni Sahne Ekle";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Sahne Adı</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SeatCapacity" class="control-label">Koltuk Kapasitesi</label>
+        <input asp-for="SeatCapacity" class="form-control" />
+        <span asp-validation-for="SeatCapacity" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SceneType" class="control-label">Sahne Tipi</label>
+        <input asp-for="SceneType" class="form-control" />
+        <span asp-validation-for="SceneType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Ekle" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">İptal</a>
+</div>

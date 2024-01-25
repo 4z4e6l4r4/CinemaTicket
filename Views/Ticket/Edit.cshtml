@@ -1,0 +1,59 @@
+﻿@model CinemaTicket.Models.Ticket
+
+@{
+    ViewData["Title"] = "Bilet Düzenle";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">    
+    @Html.AntiForgeryToken()
+    
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="ScreeningId" class="control-label">Gösterim</label>
+      @*   <select asp-for="ScreeningId" class="form-control">
+            @foreach (var screening in ViewBag.Screenings as IEnumerable<CinemaTicket.Models.Screening>) {
+                <option value="@screening.Id" @(Model.ScreeningId == screening.Id ? "selected" : "")>@screening.ScreeningTime</option>
+            }
+        </select> *@
+        <span asp-validation-for="ScreeningId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SeatNumber" class="control-label">Koltuk Numarası</label>
+        <input asp-for="SeatNumber" class="form-control" />
+        <span asp-validation-for="SeatNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Fiyat</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SaleDate" class="control-label">Satış Tarihi</label>
+        <input asp-for="SaleDate" class="form-control" type="datetime-local" />
+        <span asp-validation-for="SaleDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UserId" class="control-label">Kullanıcı</label>
+      @*   <select asp-for="UserId" class="form-control">
+            @foreach (var user in ViewBag.Users as IEnumerable<CinemaTicket.Models.User>) {
+                <option value="@user.Id" @(Model.UserId == user.Id ? "selected" : "")>@user.Name</option>
+            }
+        </select> *@
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Güncelle" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">İptal</a>
+</div>
