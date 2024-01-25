@@ -18,21 +18,33 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var movie in Model)
+
+
+        @if (Model != null && Model.Any())
         {
-            <tr>
-                <td>@movie.Name</td>
-                <td>@movie.Director</td>
-                <td>@movie.Duration</td>
-                <td>@movie.Genre</td>
-                <td>@movie.ReleaseDate.ToString("dd/MM/yyyy")</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@movie.Id">Detaylar</a> |
-                    <a asp-action="Edit" asp-route-id="@movie.Id">Düzenle</a> |
-                    <a asp-action="Delete" asp-route-id="@movie.Id">Sil</a>
-                </td>
-            </tr>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>@movie.Name</td>
+                    <td>@movie.Director</td>
+                    <td>@movie.Duration</td>
+                    <td>@movie.Genre</td>
+                    <td>@movie.ReleaseDate.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@movie.Id">Detaylar</a> |
+                        <a asp-action="Edit" asp-route-id="@movie.Id">Düzenle</a> |
+                        <a asp-action="Delete" asp-route-id="@movie.Id">Sil</a>
+                    </td>
+                </tr>
+            }
         }
+        else
+        {
+            <p>Film bulunamadı.</p>
+        }
+
+
+       
     </tbody>
 </table>
 
